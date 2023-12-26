@@ -1,28 +1,14 @@
-'use client'
-
-import { useRef, useEffect } from 'react'
-import Lottie from 'lottie-web'
-
-import keqing from '@/lib/KeqingAnimatedData.json'
-import { ModeToggle } from '@/components/Shared/ModeToggle'
+import Hero from '@/components/Hero/Hero'
 
 export default function Home() {
-  const animationContainer = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (animationContainer.current) {
-      animationContainer.current.innerHTML = '';
-      Lottie.loadAnimation({
-        container: animationContainer.current,
-        animationData: keqing
-      })
-    } else return
-  }, [])
 
   return (
-    <main className="w-full h-dvh">
-      <ModeToggle />
-      <div ref={animationContainer} className='h-full max-h-[500px]'></div>
+    <main className="w-full h-dvh overflow-x-clip relative">
+      <Hero />
+      <div
+        className='absolute top-36 -right-8 size-[400px] rounded-full bg-primary/70 dark:bg-primary -z-[1]
+      blur-xl pointer-events-none select-none'
+      ></div>
     </main>
   )
 }
